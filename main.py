@@ -10,6 +10,9 @@ import threading
 import time
 from ttkthemes import ThemedTk
 
+SCRIPT_PATH = os.path.realpath(__file__)
+MAIN_DIR = os.path.dirname(SCRIPT_PATH).replace("\\", "/") + "/"
+
 
 class MusicPlayer():
     def __init__(self):
@@ -31,7 +34,7 @@ class MusicPlayer():
         windows.geometry('920x350')
         windows.resizable(0, 0)
         windows.title("Music Player")
-        windows.iconbitmap(r'E:/Music_Player/icon/main.ico')
+        windows.iconbitmap(MAIN_DIR + "images/main.ico")
         # windows.configure(background="red")
         windows.grid_rowconfigure(0, weight=1)
         windows.grid_columnconfigure(0, weight=1)
@@ -64,31 +67,31 @@ class MusicPlayer():
         subMenu.add_command(label="About Us", command=self.messageBox)
         subMenu.add_command(label="Exit", command=self.exitWindows)
 
-        playImage = PhotoImage(file="E:/Music_Player/icon/play.png")
+        playImage = PhotoImage(file=MAIN_DIR + "images//play.png")
         playButton = ttk.Button(
             self.middleFrame, image=playImage, command=self.playMusic)
         playButton.image = playImage
         playButton.grid(row=0, column=1, padx=10, pady=10)
 
-        stopImage = PhotoImage(file="E:/Music_Player/icon/stop.png")
+        stopImage = PhotoImage(file=MAIN_DIR + "images/stop.png")
         stopButton = ttk.Button(
             self.middleFrame, image=stopImage, command=self.stopMusic)
         stopButton.image = stopImage
         stopButton.grid(row=0, column=2, padx=10, pady=10)
 
-        pauseImage = PhotoImage(file="E:/Music_Player/icon/pause.png")
+        pauseImage = PhotoImage(file=MAIN_DIR + "images/pause.png")
         pauseButton = ttk.Button(self.middleFrame, image=pauseImage,
                                  command=self.pauseMusic)
         pauseButton.image = pauseImage
         pauseButton.grid(row=0, column=3, padx=10, pady=10)
 
-        resetImage = PhotoImage(file="E:/Music_Player/icon/reset.png")
+        resetImage = PhotoImage(file=MAIN_DIR + "images/reset.png")
         resetButton = ttk.Button(self.middleFrame, image=resetImage,
                                  command=self.resetMusic)
         resetButton.image = resetImage
         resetButton.grid(row=0, column=4, padx=10, pady=10)
 
-        self.unmuteImage = PhotoImage(file="E:/Music_Player/icon/sound.png")
+        self.unmuteImage = PhotoImage(file=MAIN_DIR + "images/sound.png")
         self.mutedButton = ttk.Button(
             self.middleFrame, image=self.unmuteImage, command=self.muteMusic)
         self.mutedButton.image = self.unmuteImage
